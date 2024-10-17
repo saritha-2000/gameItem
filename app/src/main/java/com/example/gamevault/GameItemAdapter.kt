@@ -3,8 +3,8 @@ package com.example.gamevault.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
 import android.widget.TextView
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -33,7 +33,7 @@ class GameItemAdapter(
     inner class GameItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val nameTextView: TextView = itemView.findViewById(R.id.text_view_name)
         private val descriptionTextView: TextView = itemView.findViewById(R.id.text_view_description)
-        private val deleteButton: ImageButton = itemView.findViewById(R.id.button_delete)
+        private val deleteButton: AppCompatImageView = itemView.findViewById(R.id.image_view_delete) // Updated to match XML
 
         fun bind(gameItem: GameEntity) {
             nameTextView.text = gameItem.name

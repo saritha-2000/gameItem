@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@drawable/background_gradient"> <!-- Updated Gradient -->
+
+    <!-- Title TextView -->
+    <TextView
+        android:id="@+id/title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Game Vault"
+        android:textAppearance="?attr/textAppearanceHeadline4"
+        android:textColor="@android:color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"/>
 
     <!-- Add Item Button -->
     <com.google.android.material.button.MaterialButton
@@ -11,13 +26,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add Item"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
+        app:icon="@drawable/ic_add"
+        app:iconGravity="textStart"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        app:cornerRadius="20dp"
+        android:backgroundTint="@color/white"
+        android:textColor="#3700B3"
+        app:layout_constraintTop_toBottomOf="@id/title_text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+        android:layout_marginTop="16dp"/>
 
-    <!-- SwipeRefreshLayout containing RecyclerView and Empty View TextView in a FrameLayout -->
+    <!-- SwipeRefreshLayout with FrameLayout -->
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh_layout"
         android:layout_width="0dp"
@@ -27,29 +46,30 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
 
-        <!-- FrameLayout to overlay RecyclerView and Empty View TextView -->
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:padding="8dp">
 
-            <!-- RecyclerView to display list of items -->
+            <!-- RecyclerView for list items -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="8dp"
-                android:clipToPadding="false" />
+                android:clipToPadding="false"
+                android:paddingBottom="8dp"/>
 
-            <!-- Empty View (TextView) for when RecyclerView has no items -->
+            <!-- Empty View -->
             <TextView
                 android:id="@+id/text_view_empty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="No items available. Tap 'Add Item' to start."
                 android:textAppearance="?attr/textAppearanceBody1"
+                android:textColor="@android:color/white"
                 android:gravity="center"
                 android:visibility="gone"
-                android:layout_gravity="center" />
+                android:layout_gravity="center"/>
         </FrameLayout>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
