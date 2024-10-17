@@ -1,13 +1,11 @@
 package com.example.gamevault
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.example.gamevault.R
 import com.example.gamevault.entity.GameEntity
 import com.example.gamevault.viewmodel.GameViewModel
 
@@ -15,19 +13,36 @@ class AddEditGameItemActivity : AppCompatActivity() {
 
     private val gameViewModel: GameViewModel by viewModels()
     private lateinit var saveButton: Button
+    private lateinit var backButton: Button
     private lateinit var nameEditText: EditText
     private lateinit var descriptionEditText: EditText
+    private var itemId: Int? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_edit_game_item)
 
+        // Initialize views
         saveButton = findViewById(R.id.button_save)
+        backButton = findViewById(R.id.button_back) // Moved inside onCreate
         nameEditText = findViewById(R.id.edit_text_name)
         descriptionEditText = findViewById(R.id.edit_text_description)
 
+        // Check for existing item data
+        val extras = intent.extras
+        if (extras != null) {
+            itemId = extras.getInt("EXTRA_ID")
+            nameEditText.setText(extras.getString("EXTRA_NAME"))
+            descriptionEditText.setText(extras.getString("EXTRA_DESCRIPTION"))
+        }
+
+        // Set click listener for save button
         saveButton.setOnClickListener {
             saveGameItem()
+        }
+
+        backButton.setOnClickListener {
+            finish() // Go back to MainActivity
         }
     }
 
@@ -40,15 +55,13 @@ class AddEditGameItemActivity : AppCompatActivity() {
             return
         }
 
-        // Use GameEntity instead of GameItem
-        val gameItem = GameEntity(name = name, description = description)
-        gameViewModel.insert(gameItem)
-
-        val resultIntent = Intent().apply {
-            putExtra("EXTRA_NAME", name)
-            putExtra("EXTRA_DESCRIPTION", description)
+        val gameItem = GameEntity(id = itemId ?: 0, name = name, description = description)
+        if (itemId != null) {
+            gameViewModel.update(gameItem)
+        } else {
+            gameViewModel.insert(gameItem)
         }
-        setResult(RESULT_OK, resultIntent)
+
         finish()
     }
 }
