@@ -1,3 +1,5 @@
+package com.example.gamevault
+
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -5,8 +7,9 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.gamevault.R
+import com.example.gamevault.adapter.GameItemAdapter
 import com.example.gamevault.viewmodel.GameViewModel
+import com.example.gamevault.AddEditGameItemActivity // Update this import based on the actual package path
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,5 +36,4 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
-
 }

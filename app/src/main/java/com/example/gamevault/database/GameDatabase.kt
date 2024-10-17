@@ -1,9 +1,13 @@
+package com.example.gamevault.database
+
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.gamevault.dao.GameItemDao
+import com.example.gamevault.entity.GameEntity
 
-@Database(entities = [GameItem::class], version = 1)
+@Database(entities = [GameEntity::class], version = 1, exportSchema = false)
 abstract class GameDatabase : RoomDatabase() {
     abstract fun gameItemDao(): GameItemDao
 

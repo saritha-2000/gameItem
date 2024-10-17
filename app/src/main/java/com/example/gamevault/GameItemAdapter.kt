@@ -1,3 +1,5 @@
+package com.example.gamevault.adapter
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,8 +9,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gamevault.R
+import com.example.gamevault.entity.GameEntity
 
-class GameItemAdapter : ListAdapter<GameItem, GameItemAdapter.GameItemViewHolder>(GameItemDiffCallback()) {
+class GameItemAdapter : ListAdapter<GameEntity, GameItemAdapter.GameItemViewHolder>(GameItemDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GameItemViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.activity_game_item_adapter, parent, false)
@@ -25,15 +28,15 @@ class GameItemAdapter : ListAdapter<GameItem, GameItemAdapter.GameItemViewHolder
         private val descriptionTextView: TextView = itemView.findViewById(R.id.text_view_description)
         private val completedImageView: ImageView = itemView.findViewById(R.id.image_view_completed)
 
-        fun bind(gameItem: GameItem) {
+        fun bind(gameItem: GameEntity) {
             nameTextView.text = gameItem.name
             descriptionTextView.text = gameItem.description
             completedImageView.visibility = if (gameItem.completed) View.VISIBLE else View.GONE
         }
     }
 
-    class GameItemDiffCallback : DiffUtil.ItemCallback<GameItem>() {
-        override fun areItemsTheSame(oldItem: GameItem, newItem: GameItem): Boolean = oldItem.id == newItem.id
-        override fun areContentsTheSame(oldItem: GameItem, newItem: GameItem): Boolean = oldItem == newItem
+    class GameItemDiffCallback : DiffUtil.ItemCallback<GameEntity>() {
+        override fun areItemsTheSame(oldItem: GameEntity, newItem: GameEntity): Boolean = oldItem.id == newItem.id
+        override fun areContentsTheSame(oldItem: GameEntity, newItem: GameEntity): Boolean = oldItem == newItem
     }
 }

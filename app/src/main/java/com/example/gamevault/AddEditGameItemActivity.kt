@@ -1,3 +1,5 @@
+package com.example.gamevault
+
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -6,6 +8,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.gamevault.R
+import com.example.gamevault.entity.GameEntity
 import com.example.gamevault.viewmodel.GameViewModel
 
 class AddEditGameItemActivity : AppCompatActivity() {
@@ -37,7 +40,8 @@ class AddEditGameItemActivity : AppCompatActivity() {
             return
         }
 
-        val gameItem = GameItem(name = name, description = description)
+        // Use GameEntity instead of GameItem
+        val gameItem = GameEntity(name = name, description = description)
         gameViewModel.insert(gameItem)
 
         val resultIntent = Intent().apply {
