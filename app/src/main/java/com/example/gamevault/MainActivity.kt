@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gamevault.adapter.GameItemAdapter
 import com.example.gamevault.viewmodel.GameViewModel
-import com.example.gamevault.AddEditGameItemActivity // Update this import based on the actual package path
+
 
 class MainActivity : AppCompatActivity() {
 
