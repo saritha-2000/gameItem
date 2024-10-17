@@ -1,54 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:background="?android:attr/windowBackground">
+    android:padding="24dp"
+    android:gravity="center"
+    android:background="@drawable/background_gradient">
 
-    <Button
-        android:id="@+id/button_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Back"
-        android:layout_gravity="start"
-        android:layout_marginBottom="16dp" />
+    <!-- Screen Title -->
+    <TextView
+    android:id="@+id/text_title"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Add/Edit Game Item"
+    android:textSize="24sp"
+    android:textColor="@android:color/white"
+    android:textStyle="bold"
+    android:layout_marginBottom="12dp" />
 
-    <!-- Name Input Field -->
-    <EditText
+        <!-- Back Button -->
+    <com.google.android.material.button.MaterialButton
+    android:id="@+id/button_back"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Back"
+    android:layout_marginBottom="16dp"
+    android:icon="@drawable/ic_back"
+    app:iconGravity="textStart"
+    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+    app:strokeColor="@color/colorPrimary"
+    app:strokeWidth="1dp"
+    android:textColor="@color/colorPrimary" />
+
+        <!-- Name Input Field with Icon and Rounded Corners -->
+    <com.google.android.material.textfield.TextInputLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    app:boxStrokeColor="@color/colorPrimary"
+    app:boxCornerRadiusTopStart="12dp"
+    app:boxCornerRadiusTopEnd="12dp"
+    app:boxCornerRadiusBottomStart="12dp"
+    app:boxCornerRadiusBottomEnd="12dp"
+    app:boxBackgroundMode="outline"
+    app:endIconMode="clear_text">
+
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/edit_text_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/edit_text_background"
         android:hint="Name"
         android:inputType="textPersonName"
         android:padding="12dp"
         android:textSize="16sp"
-        android:textColorHint="#888888" />
+        android:textColorHint="@color/colorHint"
+        android:drawableStart="@drawable/ic_person"
+        android:drawablePadding="8dp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Description Input Field -->
-    <EditText
+        <!-- Description Input Field with Icon and Rounded Corners -->
+    <com.google.android.material.textfield.TextInputLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="12dp"
+    app:boxStrokeColor="@color/colorPrimary"
+    app:boxCornerRadiusTopStart="12dp"
+    app:boxCornerRadiusTopEnd="12dp"
+    app:boxCornerRadiusBottomStart="12dp"
+    app:boxCornerRadiusBottomEnd="12dp"
+    app:boxBackgroundMode="outline"
+    app:endIconMode="clear_text">
+
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/edit_text_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/edit_text_background"
         android:hint="Description"
         android:inputType="textMultiLine"
         android:padding="12dp"
         android:textSize="16sp"
-        android:textColorHint="#888888"
-        android:layout_marginTop="12dp" />
+        android:textColorHint="@color/colorHint"
+        android:drawableStart="@drawable/ic_note"
+        android:drawablePadding="8dp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <!-- Save Button -->
+        <!-- Save Button with Larger Size and Shadow -->
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/button_save"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Save"
-        android:textSize="16sp"
-        android:layout_marginTop="24dp"
-        android:paddingVertical="12dp"
-        android:layout_gravity="end"
-        android:backgroundTint="?attr/colorPrimary"
-        android:textColor="@android:color/white" />
-</LinearLayout>
+    android:id="@+id/button_save"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Save"
+    android:textSize="18sp"
+    android:layout_marginTop="24dp"
+    android:paddingVertical="16dp"
+    android:backgroundTint="@color/colorPrimary"
+    android:textColor="@android:color/white"
+    app:cornerRadius="24dp"
+    app:strokeWidth="0dp"
+    app:elevation="8dp" />
+    </LinearLayout>
