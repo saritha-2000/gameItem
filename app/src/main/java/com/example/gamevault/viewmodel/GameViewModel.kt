@@ -15,7 +15,6 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
     val allGameItems: LiveData<List<GameEntity>>
 
     init {
-        // Initialize the database and repository
         val database = GameDatabase.getDatabase(application)
         repository = GameRepository(application)
         allGameItems = repository.allGameItems

@@ -5,9 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    android:background="@drawable/background_gradient"> <!-- Updated Gradient -->
+    android:background="@drawable/wp_image">
 
-    <!-- Title TextView -->
     <TextView
         android:id="@+id/title_text"
         android:layout_width="wrap_content"
@@ -20,7 +19,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"/>
 
-    <!-- Add Item Button -->
     <com.google.android.material.button.MaterialButton
         android:id="@+id/button_add_item"
         android:layout_width="wrap_content"
@@ -36,7 +34,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"/>
 
-    <!-- SwipeRefreshLayout with FrameLayout -->
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh_layout"
         android:layout_width="0dp"
@@ -51,7 +48,6 @@
             android:layout_height="match_parent"
             android:padding="8dp">
 
-            <!-- RecyclerView for list items -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view"
                 android:layout_width="match_parent"
@@ -59,7 +55,6 @@
                 android:clipToPadding="false"
                 android:paddingBottom="8dp"/>
 
-            <!-- Empty View -->
             <TextView
                 android:id="@+id/text_view_empty"
                 android:layout_width="wrap_content"

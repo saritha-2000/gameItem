@@ -39,7 +39,6 @@ class GameItemAdapter(
             nameTextView.text = gameItem.name
             descriptionTextView.text = gameItem.description
 
-            // Set click listener for delete button
             deleteButton.setOnClickListener {
                 onDeleteClick(gameItem)
             }

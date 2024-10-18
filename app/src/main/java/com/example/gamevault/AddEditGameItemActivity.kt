@@ -22,13 +22,13 @@ class AddEditGameItemActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_edit_game_item)
 
-        // Initialize views
+        // initialize views
         saveButton = findViewById(R.id.button_save)
-        backButton = findViewById(R.id.button_back) // Moved inside onCreate
+        backButton = findViewById(R.id.button_back)
         nameEditText = findViewById(R.id.edit_text_name)
         descriptionEditText = findViewById(R.id.edit_text_description)
 
-        // Check for existing item data
+        // get existing item data
         val extras = intent.extras
         if (extras != null) {
             itemId = extras.getInt("EXTRA_ID")
@@ -36,13 +36,12 @@ class AddEditGameItemActivity : AppCompatActivity() {
             descriptionEditText.setText(extras.getString("EXTRA_DESCRIPTION"))
         }
 
-        // Set click listener for save button
         saveButton.setOnClickListener {
             saveGameItem()
         }
 
         backButton.setOnClickListener {
-            finish() // Go back to MainActivity
+            finish()
         }
     }
 
